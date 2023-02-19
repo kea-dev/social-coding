@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e 
 
 git config --local include.path ../.gitconfig
 
