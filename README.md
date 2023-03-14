@@ -1,21 +1,33 @@
 # kea-dev/social-coding
 
-**This repo is used to offer assignments (exercises) in GitHub Classroom related to the module ["Social Coding"](https://docs.kea.dev/posts/social-coding/) which - as always - you will find a [docs.kea.dev](https://docs.kea.dev)**
+**This repo is used to offer assignments (exercises) in GitHub Classroom related to the module ["Social Coding"](https://docs.kea.dev/posts/social-coding/) which - as always - you will find a [docs.kea.dev](https://docs.kea.dev/posts/social-coding/)**
 
-If you have any questions feel free to join the [discussion 💬 @ kea-dev](https://github.com/orgs/kea-dev/discussions)
+If you have any questions join the [discussion 💬 @ kea-dev](https://github.com/orgs/kea-dev/discussions)
 
 # How to get started
 
-After you have acceptet the assignment in GitHub Classroom, you will need to initialize it by importing the issues from the template. So let's start with testing wether...
+You may have been givne an assignemnt in GitHub Classroom by your instructor ([more details](https://docs.kea.dev/posts/github-classroom/)) - or you may just simply create a copy of this repository using the "create template" feature. Either way, you will get your own detached repository to work from.
+
+A template workflow will run automatically and copy over the issues defined in the template repo. 
+
+Or you can initiate the copy manually by running :
+
+```
+.github/template/cpissues.sh
+```
+
+The issues are deliberately copied over in an unordely fashion - the issues numbers do not depict the natural sequence to solve them. 
+
+Go straight to the issue titleed "README FIRST" and get further instructions from there.
 
 
 # Are you GitHub Ready?
 
-This execise makes use og VS Code and the GitHub CLI `gh`. The very first thing you need to check is if you have the command line interface `gh` (GitHub) installed. We will be using it extensively. 
+This execise makes use og VS Code and the GitHub CLI `gh`. The simplest and recommended way to do the assignment is to use a codespace on GitHub.
 
-If you are working in a GitHub CodeSpace it may just work out of the box. If you are in VC Code on your PC you need to install it. 
+If you choses to run it locally on your PC in VS Code you must make sure, that command line interface `gh` (GitHub) installed. We will be using it extensively. 
 
-- [ ] Test if `gh`is properly installed by running the command below:
+Test by running
 
 ```
 gh auth status
@@ -25,31 +37,6 @@ gh auth status
 ❌ If it doesn't then you need to make sure that it's [installed correctly](https://cli.github.com/manual/installation) and that you are properly [authenticated](https://cli.github.com/manual/gh_auth_login).<br/>
 💬 If you need help call out at the [discussion @ kea-dev](https://github.com/orgs/kea-dev/discussions)
 
-# Import issues from template repository
-
-- [ ] Accept the assigmenet you were given in GitHub Classroom
-- [ ] Open the repo in a GitHub CodeSpace (or in VS Code on your PC)
-- [ ] Run the script that will copy the template issues from the template repository to your own.
-
-- Open a terminal
-- Make sure your working directory is the root of the repository
-- Copy the code below an run it
-
-```
-.github/template/cpissues.sh
-```
-
-The command will create a series of issues in your own repo - simply get cracking at 'em - work those issues!
-
-<details><summary>README FIRST</summary>
-
----
-The issues are deliberatly given to you in an _un-ordered_ fashion. One of the issues stands out though: _"README FIRST"_ ...I suggest you start with that! 
-
----
-</details>
-
-
 &nbsp;&nbsp;&nbsp;&nbsp;________________________<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;_February 2023_<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;_Marsh 2023_<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;_Lars Kruse - [@lakruzz](https://github.com/lakruzz)_
