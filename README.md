@@ -1,6 +1,6 @@
 # Social coding
 
-**This repo is used to offer assignments (exercises) in GitHub Classroom related to the module ["Social Coding"](https://docs.kea.dev/posts/social-coding/) which - as always - you will find a [docs.kea.dev](https://docs.kea.dev/posts/social-coding/)**
+**This repo is used to offer assignments (exercises) in GitHub Classroom related to the module ["Social Coding"](https://docs.kea.dev/posts/social-coding/)**
 
 If you have any questions join the [discussion 💬 @ kea-dev](https://github.com/orgs/kea-dev/discussions)
 
