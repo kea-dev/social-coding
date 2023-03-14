@@ -6,8 +6,6 @@ echo "Listing the issues in the repo - there should be at least $EXPECTEDISSUES.
 gh issue list -s all
 echo "Found $ISSUECOUNT issues".
 
-echo $GITHUB_TOKEN
-
 if [ $ISSUECOUNT -ge $EXPECTEDISSUES ]
 then
   echo "👌 All is good"
