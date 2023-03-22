@@ -15,21 +15,20 @@ permissions:
 
 jobs:
   cpissues:
-    name: "Copy Issues from Template"
+    name: "Initial commit only"
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.head_commit.message, 'Initial commit') }}
-    steps:
+    steps:       
+      - uses: actions/checkout@v3
       - name: "Raise semaphore or quit"
         run: |
-          if [ -f /tmp/semaphore.lock ]; then
-            echo "Semaphore is raised - another job got here first - bye!"
-            exit 1
+          if $(gh workflow disable template.yml 2>&1); then
+            echo "Workflow successfully disabled"
           else
-            echo "$(date +%s)" > /tmp/semaphore.lock
-            echo "Raised the semaphore."
-          fi          
-      - uses: actions/checkout@v3
-      - run: eval gh workflow disable template.yml
-      - run: |
-          .github/template/cpissues.sh
-          gh issue list -s all
+             echo "Another job got here first - This room is crowded - I'm outta here!"
+             exit 0
+          fi
+      - name: "Copying issues over"
+        run: .github/template/cpissues.sh
+      - name: "List the issues copied"
+        run: gh issue list -s all
