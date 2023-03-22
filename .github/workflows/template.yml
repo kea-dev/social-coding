@@ -19,9 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.head_commit.message, 'Initial commit') }}
     steps:       
-      - uses: actions/checkout@v3
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        
       - name: "Raise semaphore or quit"
-        workflow_commands: |
+        run: |
           if $(gh workflow disable template.yml); then
             echo "Workflow successfully disabled"
           else
@@ -30,5 +32,6 @@ jobs:
           fi          
       - name: "Copying issues over"
         run: .github/template/cpissues.sh
+        
       - name: "List the issues copied"
         run: gh issue list -s all
