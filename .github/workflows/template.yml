@@ -21,13 +21,13 @@ jobs:
     steps:       
       - uses: actions/checkout@v3
       - name: "Raise semaphore or quit"
-        run: |
-          if $(gh workflow disable template.yml 2>&1); then
+        workflow_commands: |
+          if $(gh workflow disable template.yml); then
             echo "Workflow successfully disabled"
           else
-             echo "Another job got here first - This room is crowded - I'm outta here!"
-             exit 0
-          fi
+             echo "##[error]Another job got here first - This room is crowded - I'm outta here!"
+             exit 1
+          fi          
       - name: "Copying issues over"
         run: .github/template/cpissues.sh
       - name: "List the issues copied"
