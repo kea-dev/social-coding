@@ -4,13 +4,12 @@ name: Triggered once, when initialized from template
 on:
   push:
     branches:
-      - main
-      - master 
+      - '**'
     paths-ignore:
       - '**'
     if: >
       github.event.commits[0].commit.message =~ /Initial commit/
-      # "Initial commit" is the message applied to the first commit created by the "use tempale" feature
+      # "Initial commit" is the message applied to the first commit created by the "use template" feature
       
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
