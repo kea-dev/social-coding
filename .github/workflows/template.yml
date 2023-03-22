@@ -24,7 +24,7 @@ jobs:
         
       - name: "Raise semaphore or quit"
         run: |
-          DISABLE_OUTPUT=$(gh workflow disable template.yml 2>&1)
+          DISABLE_OUTPUT=$(eval gh workflow disable template.yml 2>&1)
           if echo "$DISABLE_OUTPUT" | grep -q 'HTTP 404'; then
             echo "::error Another job got here first - This room is crowded - I'm outta here!"
             exit 1
