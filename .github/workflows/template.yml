@@ -27,7 +27,7 @@ jobs:
           if $(gh workflow disable template.yml); then
             echo Workflow successfully disabled
           else
-             echo "::warning file=.github/workflows/template.yml, line=27, title=Another job got here first::This room is crowded - I'm outta here!"
+             echo "::warning file=.github/workflows/template.yml,line=27,endLine=32,title=Another job got here first::This room is crowded - I'm outta here!"
              exit 1
           fi
           
