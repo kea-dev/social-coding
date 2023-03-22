@@ -5,12 +5,6 @@ on:
   push:
     branches:
       - '**' 
-    paths-ignore:
-      - '**'
-    if: >
-      github.event.head_commit.message =~ /Initial commit/
-      
-      
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -21,14 +15,26 @@ permissions:
   issues: write
 
 jobs:
-  build:
+  cpissues:
     name: "Copy Issues from Template"
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.head_commit.message, 'Initial commit') }}
+    needs: deploy-lock
     steps:
+      - name: Check if lock exists
+        run: |
+          if [ -f /tmp/semaphor.lock ]; then
+            echo "Semaphor is raised - another job got here first - bye!"
+            exit 1
+          else
+            echo "$(date +%s)" > /tmp/semaphor.lock
+          fi          
       - uses: actions/checkout@v3
       - run: gh workflow disable template.yml
       - run: |
           .github/template/cpissues.sh
-          gh issue list -s all 
-      
+          gh issue list -s all
+            - name: Release lock
+      - name: "Lower semaphor"
+        run: |
+          eval (rm /tmp/semaphor.lock)
