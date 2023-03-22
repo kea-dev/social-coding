@@ -27,6 +27,7 @@ jobs:
             exit 1
           else
             echo "$(date +%s)" > /tmp/semaphore.lock
+            echo "Raised the semaphore."
           fi          
       - uses: actions/checkout@v3
       - run: gh workflow disable template.yml
