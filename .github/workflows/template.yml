@@ -24,14 +24,12 @@ jobs:
         
       - name: "Raise semaphore or quit"
         run: |
-          DISABLE_OUTPUT=$(eval gh workflow disable template.yml 2>&1)
-          if echo "$DISABLE_OUTPUT" | grep -q 'HTTP 404'; then
-            echo "::error Another job got here first - This room is crowded - I'm outta here!"
-            exit 1
-          else 
-            echo "Workflow successfully disabled"
-            echo $DISABLE_OUTPUT
-          fi      
+          if $(gh workflow disable template.yml); then
+            echo Workflow successfully disabled
+          else
+             echo "::warning file=.github/workflows/template.yml, line=27, title=Another job got here first::This room is crowded - I'm outta here!"
+             exit 1
+          fi
           
       - name: "Copying issues over"
         run: .github/template/cpissues.sh
