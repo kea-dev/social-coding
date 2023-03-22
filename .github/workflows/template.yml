@@ -20,8 +20,10 @@ jobs:
     name: "Copy Issues from Template"
     runs-on: ubuntu-latest
     steps:
-      - run: gh workflow disable template.yml
       - uses: actions/checkout@v3
-      - run: .github/template/cpissues.sh
-      - run: gh issue list -s all 
+      - run: gh workflow disable template.yml
+      - run: |
+        sleep 20s
+        .github/template/cpissues.sh
+        gh issue list -s all 
       
