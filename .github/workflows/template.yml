@@ -4,13 +4,7 @@ name: Triggered once, when initialized from template
 on:
   push:
     branches:
-      - '**'
-    paths-ignore:
-      - '**'
-    if: >
-      github.event.commits[0].commit.message =~ /Initial commit/
-      # "Initial commit" is the message applied to the first commit created by the "use template" feature
-      
+      - '**'      
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -24,6 +18,7 @@ jobs:
   build:
     name: "Copy Issues from Template"
     runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.message, 'Initial commit') }}
     steps:
       - uses: actions/checkout@v3
       - run: gh workflow disable template.yml
