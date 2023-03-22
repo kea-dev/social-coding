@@ -19,15 +19,14 @@ jobs:
     name: "Copy Issues from Template"
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.head_commit.message, 'Initial commit') }}
-    needs: deploy-lock
     steps:
-      - name: Check if lock exists
+      - name: "Raise semaphore or quit"
         run: |
-          if [ -f /tmp/semaphor.lock ]; then
-            echo "Semaphor is raised - another job got here first - bye!"
+          if [ -f /tmp/semaphore.lock ]; then
+            echo "Semaphore is raised - another job got here first - bye!"
             exit 1
           else
-            echo "$(date +%s)" > /tmp/semaphor.lock
+            echo "$(date +%s)" > /tmp/semaphore.lock
           fi          
       - uses: actions/checkout@v3
       - run: gh workflow disable template.yml
@@ -35,6 +34,6 @@ jobs:
           .github/template/cpissues.sh
           gh issue list -s all
             - name: Release lock
-      - name: "Lower semaphor"
+      - name: "Lower semaphore"
         run: |
-          eval (rm /tmp/semaphor.lock)
+          eval (rm /tmp/semaphore.lock)
