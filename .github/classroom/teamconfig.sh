@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e 
 
-git config --local include.path ../.gitconfig
+git config --local --get include.path || git config --local include.path ../.gitconfig
 
 echo Checking git co alias
 git co

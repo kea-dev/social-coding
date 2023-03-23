@@ -3,4 +3,4 @@
 echo Looking up the alias.mergetest
 
 
-git config --file $(git root)/.gitconfig --get alias.mergetest
+git config --file $(git rev-parse --show-toplevel)/.gitconfig --get alias.mergetest

@@ -3,4 +3,4 @@
 echo Looking up the alias.mergetest
 
 
-git config --file $(git root)/.gitconfig --get push.default
+git config --file $(git rev-parse --show-toplevel)/.gitconfig --get push.default
